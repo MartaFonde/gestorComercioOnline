@@ -15,7 +15,8 @@ class Product extends Model
         parent::boot();
         if(!app() -> runningInConsole()){
             self::creating(function($table){
-                $table->shop_id = /*$table->shops-> id() -> */ auth()->id(); //DUDAS -insertaría id de user ¿?
+
+                //$table->shop_id = /*$table->shops-> id() -> */ auth()->id(); //DUDAS -insertaría id de user ¿?
             });
         }
     }

@@ -2,28 +2,42 @@
     <div class="row justify-content-center">
         <div class="col-md-  8">
             <div class="card">
-                <div class="card-header">Productos de la tienda <b>{{$shop->name}}</b></div> 
-                <a href="{{route('index')}}" class="btn  btn-info  text-white">Volver al listado de tiendas</a> 
-                <a href="{{route('createProduct',$shop->id)}}" class="btn btn-success btn-block mt-3">Añadir un nuevo producto</a>
-                <table class='table'> @if($shop->products->count()) <thead>
+                <div class="card-header">Producto de la tienda<b></b></div>                 
+                <table class='table'> 
+                    <thead>
                         <tr>
                             <th>Nombre</th>
+                        </tr>
+                        <tr>
+                            <td width="70%">{{$product->name}}</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
+                        <tr>
                             <th>Descripción</th>
+                        </tr>
+                        <tr>
+                            <td>{{$product->description}}</td>
+                        </tr>
+
+                        <tr>                            
                             <th>Precio</th>
                         </tr>
-                    </thead> @endif <tbody> @forelse($shop->products as $product) <tr>
-                            <td width="70%">{{$product->name}}</td>
-                            <td>{{$product->description}}</td>
+
+                        <tr>
                             <td>{{$product->price}}</td>
-                            <td><a href="{{route('index')}}" class="btn btn-dark">Ir a la lista de tiendas </a></td>
-                        </tr> @empty <tr>
-                            <td colspan="3">
-                                <p class="alert    alert-warning    text-center">No hay productos</p>
-                            </td>
-                        </tr> 
-                        @endforelse </tbody>
+                        </tr>
+                    </tbody>                                         
                 </table>
+                <br><br>
+                <a href="{{route('show', $product->shop_id)}}" class="btn btn-dark">Volver a la tienda</a>
+                <br><br>
+                <a href="{{route('index')}}" class="btn  btn-info  text-white">Volver al listado de tiendas</a> 
+
             </div>
         </div>
     </div>
-</div> @endsection
+</div> 
+@endsection

@@ -5,9 +5,7 @@
             <div class="card">
                 <div class="card-header">Productos de la tienda <b>{{$shop->name}}</b></div> 
                 <a href="{{route('index')}}" class="btn  btn-info  text-white">Volver al listado de tiendas</a> 
-                <!-- PROBLEMAS  -->
-                <a href="{{route('createProduct',$shop->id)}}" class="btn btn-success btn-block mt-3">Añadir un nuevo producto</a>
-                <!-- 404 NOT FOUND -->
+                <a href="{{route('createProduct', $shop->id)}}" class="btn btn-success btn-block mt-3">Añadir un nuevo producto</a>
                 <table class='table'> @if($shop->products->count()) <thead>
                         <tr>
                             <th>Nombre</th>

@@ -23,9 +23,15 @@
                                 <td>{{$shop->id}}</td>
                                 <td width="40%">{{$shop->name}}</td>
                                 <td>{{$shop->products_count}}</td>
-                                <td><a href="{{route('show',['id'=>$shop->id])}}" class="btn btn-dark">Ir a la tienda </a></td>
                                 <td>
-                                    <form method="POST" action="{{route('destroy',['id'=>$shop->id])}}"> @method ("DELETE") @csrf <button type="submit" class="btn btn-danger">Eliminar tienda</button> </form>
+                                    <a href="{{route('show',$shop->id)}}" class="btn btn-dark">Mostrar productos </a>
+                                </td>
+                                <td>
+                                    <form method="POST" action="{{route('destroy',['id'=>$shop->id])}}"> 
+                                    @method ("DELETE") 
+                                    @csrf 
+                                    <button type="submit" class="btn btn-danger">Eliminar tienda</button> 
+                                    </form>
                                 </td>
                             </tr> @empty <tr>
                                 <td colspan="3">
