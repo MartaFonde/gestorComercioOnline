@@ -8,45 +8,34 @@ use App\Models\Shop;
 
 class ShopController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
     public function index()
     {
         $shops = Shop::withCount("products")->paginate(5);
-        return view("index", compact("shops"));
+        return view("shops.index", compact("shops"));
     }
 
     public function create()
     {
-        return view("create");
+        return view("shops.create");
     }
 
     public function store(Request $request)
     {
         $this->validate(request(), [             
-            "name" => "required|min:2|unique:shops",
-            "address" => "required",
-            "numberTelephone" => "required|min:9|max:11"        
-            ]);  
+            "nombre" => "required|min:2|unique:shops",
+            "dirección" => "required",
+            "teléfono" => "required|min:9|integer"        
+        ]);  
 
             $shop = new Shop();         
             //$shop->id = $request->input('id') ?: null;         
             $shop->user_id = auth()->id();                
-            $shop->name = $request->input('name');         
-            $shop->address = $request->input('address'); 
-            $shop->numberTelephone = $request->input('numberTelephone');
+            $shop->nombre = $request->input('nombre');         
+            $shop->dirección = $request->input('dirección'); 
+            $shop->teléfono = $request->input('teléfono');
             $shop->save();         
             //return back(); //Me devuelve a la misma página     
-
-        // $this->validate(request(), [
-        //     "name" => "required|min:2|unique:shops",
-        //     "numberTelephone" => "required|min:9|max:11"
-        // ]);
-        // Shop::create(request()->only("name"));
-        return redirect(route("index"));
+            return redirect(route("index"));
     }
 
     public function destroy($id)
@@ -66,6 +55,6 @@ class ShopController extends Controller
     public function show($id)
     {
         $shop = Shop::with("products")->findOrFail($id);
-        return view("show", compact("shop"));
+        return view("shops.show", compact("shop"));
     }
 }

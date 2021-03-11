@@ -9,32 +9,32 @@ use App\Models\Shop;
 class ProductController extends Controller
 {
     public function createProduct($id) {     
-        return view("createProduct",compact("id")); 
+        return view("products.createProduct",compact("id")); 
     } 
 
     public function storeProduct(Request $request, $id) {         
         $this->validate(request(), [             
-            "name" => "required",             
-            "description" => "required"     ,
-            "price" => "required"    
+            "nombre" => "required",             
+            "descripción" => "required",
+            "precio" => "required"    
             ]);  
 
             $product = new Product();         
             //$product->id = $request->input('id') ?: null;       //non hai input id  
            // $product->user_id = auth()->id();         
             $product->shop_id = $id;         
-            $product->name = $request->input('name');         
-            $product->description = $request->input('description'); 
-            $product->price = $request->input('price');
+            $product->nombre = $request->input('nombre');         
+            $product->descripción = $request->input('descripción'); 
+            $product->precio = $request->input('precio');
             $product->save();         
             //return back(); //Me devuelve a la misma página     
             $shop = Shop::with("products")->findOrFail($id);  
-            return view("show",compact("shop"));
+            return view("shops.show",compact("shop"));
     }
 
     public function showProduct($id) {
         $product = Product::findOrFail($id);
-        return view("showProduct", compact("product")); 
+        return view("products.showProduct", compact("product")); 
     }   
 
     public function destroyProduct($id)

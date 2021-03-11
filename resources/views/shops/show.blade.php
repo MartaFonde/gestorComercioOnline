@@ -1,8 +1,11 @@
-@extends('layouts.app') @section('content') <div class="container">
+@extends('layouts.app') )
+@section('content') 
+
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-  8">
             <div class="card">
-                <div class="card-header">Detalle de la Tienda <b>{{$shop->name}}</b></div> 
+                <div class="card-header">Detalle de la Tienda <b>{{$shop->nombre}}</b></div> 
                 <a href="{{route('index')}}" class="btn  btn-info  text-white">Volver al listado de tiendas</a> 
 
                 @if(auth()->check() && ($shop->user_id == auth()->user()->id || auth()->user()->rol==0))
@@ -22,7 +25,7 @@
                     @forelse($shop->products as $product) 
                         <tr>
                             <td>{{$product->id}}</td>
-                            <td width="70%">{{$product->name}}</td>
+                            <td width="70%">{{$product->nombre}}</td>
                             <td>{{$shop->products_count}}</td>
                             <td>
                                 <a href="{{route('showProduct',['id'=>$product->id])}}" class="btn btn-dark">Ir al producto </a>

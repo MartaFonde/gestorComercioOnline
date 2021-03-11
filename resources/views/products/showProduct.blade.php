@@ -9,7 +9,7 @@
                             <th>Nombre</th>
                         </tr>
                         <tr>
-                            <td width="70%">{{$product->name}}</td>
+                            <td width="70%">{{$product->nombre}}</td>
                         </tr>
                     </thead>
 
@@ -19,7 +19,7 @@
                             <th>Descripción</th>
                         </tr>
                         <tr>
-                            <td>{{$product->description}}</td>
+                            <td>{{$product->descripción}}</td>
                         </tr>
 
                         <tr>                            
@@ -27,7 +27,7 @@
                         </tr>
 
                         <tr>
-                            <td>{{$product->price}}</td>
+                            <td>{{$product->precio}}</td>
                         </tr>
                     </tbody>                                         
                 </table>
