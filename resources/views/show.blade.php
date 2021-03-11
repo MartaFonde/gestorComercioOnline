@@ -4,9 +4,10 @@
             <div class="card">
                 <div class="card-header">Detalle de la Tienda <b>{{$shop->name}}</b></div> 
                 <a href="{{route('index')}}" class="btn  btn-info  text-white">Volver al listado de tiendas</a> 
-                <!-- PROBLEMA -->
+
+                @if(auth()->check() && ($shop->user_id == auth()->user()->id || auth()->user()->rol==0))
                 <a href="{{route('createProduct',['id'=>$shop->id])}}" class="btn btn-success btn-block mt-3">Añadir un nuevo producto</a>
-                <!-- 404 NOT FOUND -->
+                @endif
 
                 <table class='table'> 
                     @if($shop->products->count()) 
@@ -26,6 +27,7 @@
                             <td>
                                 <a href="{{route('showProduct',['id'=>$product->id])}}" class="btn btn-dark">Ir al producto </a>
                             </td>
+                            @if(auth()->check() && ($shop->user_id == auth()->user()->id || auth()->user()->rol==0))
                             <td>
                                 <form method="POST" action="{{route('destroyProduct', ['id'=>$product->id])}}"> 
                                     @method ("DELETE") 
@@ -33,6 +35,7 @@
                                     <button type="submit" class="btn btn-danger">Eliminar producto</button> 
                                 </form> 
                             </td>
+                            @endif
                         </tr> 
                         @empty <tr>
                             <td colspan="3">
