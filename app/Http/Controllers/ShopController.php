@@ -10,7 +10,7 @@ class ShopController extends Controller
 {
     public function index()
     {
-        $shops = Shop::withCount("products")->paginate(5);
+        $shops = Shop::withCount("products")->paginate(25);
         return view("shops.index", compact("shops"));
     }
 
@@ -22,20 +22,18 @@ class ShopController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [             
-            "nombre" => "required|min:2|unique:shops",
+            "nombre" => "required|unique:shops",
             "dirección" => "required",
             "teléfono" => "required|min:9|integer"        
         ]);  
 
-            $shop = new Shop();         
-            //$shop->id = $request->input('id') ?: null;         
-            $shop->user_id = auth()->id();                
-            $shop->nombre = $request->input('nombre');         
-            $shop->dirección = $request->input('dirección'); 
-            $shop->teléfono = $request->input('teléfono');
-            $shop->save();         
-            //return back(); //Me devuelve a la misma página     
-            return redirect(route("index"));
+        $shop = new Shop();         
+        $shop->user_id = auth()->id();                
+        $shop->nombre = $request->input('nombre');         
+        $shop->dirección = $request->input('dirección'); 
+        $shop->teléfono = $request->input('teléfono');
+        $shop->save();         
+        return redirect(route("index"));
     }
 
     public function destroy($id)
