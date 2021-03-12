@@ -23,7 +23,7 @@
         body{
             background-image: url("https://cdn.pixabay.com/photo/2018/02/15/14/37/leaf-3155438_960_720.jpg");
         }
-        </style>
+    </style>
 
 </head>
 <body>
@@ -55,7 +55,7 @@
                             
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                 </li>
                             @endif
                         @else

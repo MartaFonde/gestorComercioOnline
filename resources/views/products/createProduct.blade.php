@@ -17,10 +17,10 @@
                             <label for="precio">Precio</label> 
                             <input type="text" class="form-control" name="precio" />    
                             <br>              
-                            <input type="submit" class="btn  btn-block  btn-dark" value="Crear producto"> 
+                            <input type="submit" class="btn  btn-block  btn-success" value="Crear producto"> 
                         </form>                     
                         <br>
-                        <a href="{{route('index')}}" class="btn btn-success btn-block mt-8">Volver al listado de tiendas</a>
+                        <a href="{{route('index')}}" class="btn btn-dark btn-block mt-8">Volver al listado de tiendas</a>
                     </div>
                 </div>
             </div>

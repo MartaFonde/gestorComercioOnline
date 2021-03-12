@@ -17,7 +17,7 @@
                         <label for="teléfono">Teléfono</label> 
                         <input type="text" class="form-control" name="teléfono" />
                         <br>
-                    <input type="submit" class="btn btn-block btn-primary" value="Crear Tienda"></form>
+                    <input type="submit" class="btn btn-block btn-success" value="Crear Tienda"></form>
                 </div>
             </div>
         </div>
